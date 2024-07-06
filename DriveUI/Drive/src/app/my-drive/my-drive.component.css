@@ -1,0 +1,146 @@
+.drive h1{
+    margin-top: 50px;
+ }
+ body, html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+.file-c{
+  background-color: azure;
+  border-radius: 15px;
+}
+
+.file-b{
+  background-color:white;
+  border-radius: 15px;
+  padding-top: 25px;
+}
+
+.list-group-item {
+  border: none;
+}
+.navbar,.list-group-item{
+  background-color: azure;
+}
+.profile-card ,.uploadfile-card,.uploadfolder-card,.RequestFile-card{
+  position:absolute;
+  top: 50%;
+  left: 60%;
+  transform: translate(-50%, -50%);
+  background-color: azure;
+  border-radius: 10px;
+  border: 1px solid black;
+  padding: 20px;
+  width: 500px;
+  height:auto;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  margin: 10px 0;
+  background-color: azure;
+  color: black;
+  border:1px solid black; ;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  text-decoration: none;
+}
+.button:hover {
+  background-color:black;
+  color:white;
+}
+.button:hover .btn-outline-dark-lg {
+color: #fff;
+}
+
+.button:hover .fa-solid {
+color: #fff;
+}
+.close {
+color:black;
+float: left;
+font-size: 28px;
+font-weight: bold;
+cursor: pointer;
+}
+
+.table tbody tr:hover {
+background-color: #f1f1f1;
+cursor: pointer; /* Pointer cursor on hover */
+}
+
+.drive {
+ align-items: center;
+}
+.drive h1{
+ margin-top: 150px;
+}
+.uploadfile-card{
+position:absolute;
+  top: 50%;
+  left: 60%;
+  transform: translate(-50%, -50%);
+  background-color: azure;
+  border-radius: 10px;
+  border: 1px solid black;
+  padding: 20px;
+  width: 500px;
+  height:auto;
+}
+
+
+
+.table-container {
+  max-height: 400px; /* Adjust the height as needed */
+  overflow-y: auto;
+  border: 1px solid #dee2e6; /* Optional: Add border to container */
+}
+
+.custom-table {
+  background-color: #fff;
+  border-collapse: separate;
+  border-spacing: 0 1px;
+  overflow-y: auto;
+}
+
+.custom-table thead th {
+  background-color: #343a40;
+  color: #fff;
+  text-align: center;
+}
+
+.custom-table tbody tr {
+  transition: background-color 0.3s;
+}
+
+.custom-table tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+.custom-table tbody tr.table-active {
+  background-color: #d1ecf1;
+}
+
+.custom-checkbox {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  width: 20px;
+  height: 20px;
+}
+.showfolder{
+  position:absolute;
+  top: 50%;
+  left: 60%;
+  transform: translate(-50%, -50%);
+  background-color: azure;
+  border-radius: 10px;
+  border: 1px solid black;
+  padding: 20px;
+  width: 700px;
+  height:auto;
+}

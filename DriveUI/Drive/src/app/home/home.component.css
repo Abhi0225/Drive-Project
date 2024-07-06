@@ -1,0 +1,127 @@
+body, html 
+{
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: azure;
+}
+.bg-azure{
+  background-color: azure;
+}
+.file-c {
+  background-color: azure;
+  border-radius: 15px;
+  margin-bottom: 15px;
+}
+
+.file-b {
+  background-color: white;
+  border-radius: 15px;
+  /* box-shadow: 0 0 0 4px black; */
+  border:1px solid black; ;
+  padding-top: 10px;
+  padding-left: 15px;
+  padding-right: 20px;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}
+
+.list-group-item {
+  border: none;
+}
+
+.navbar,
+.list-group-item {
+  background-color: azure;
+}
+
+  .profile-card ,.uploadfile-card,.uploadfolder-card,.RequestFile-card{
+    position:absolute;
+    top: 50%;
+    left: 60%;
+    transform: translate(-50%, -50%);
+    background-color: azure;
+    border-radius: 10px;
+    padding: 20px;
+    width: 500px;
+    height:auto;
+  }
+    .table {
+    font-size: 12px;
+    border-collapse: collapse;
+    border: none;
+    padding: 10px;
+  }
+  
+  .table th {
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  .table td {
+    text-align: left;
+    padding: 10px;
+  }
+ 
+.button {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    margin: 10px 0;
+    background-color: azure;
+    color: black;
+    border:1px solid black; ;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-decoration: none;
+}
+.button:hover {
+    background-color:black;
+    color:white;
+}
+.button:hover .btn-outline-dark-lg {
+  color: #fff;
+}
+
+.button:hover .fa-solid {
+  color: #fff;
+}
+.close {
+  color:black;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.table tbody tr:hover {
+  background-color: #f1f1f1;
+  cursor: pointer; /* Pointer cursor on hover */
+}
+.table td {
+  font-size: 20px;
+}
+.h5{
+  padding-right: 2px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .file-b {
+      width: 90%;
+  }
+}
+
+@media (max-width: 992px) {
+  .file-b {
+      width: 95%;
+  }
+}
+
+@media (max-width: 768px) {
+  .file-b {
+      width: 100%;
+      padding: 15px;
+  }
+}

@@ -1,0 +1,6 @@
+@DriveDb_HostAddress = http://localhost:5299
+
+GET {{DriveDb_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

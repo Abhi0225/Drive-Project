@@ -1,0 +1,17 @@
+body {
+  background-color: azure;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+.card {
+  width: 200%;
+  max-width: 500px;
+  margin: 20px;
+  border-radius: 10px;
+  border: 2px solid black;
+  transform: translate(-10%);
+}

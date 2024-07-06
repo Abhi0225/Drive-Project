@@ -1,0 +1,234 @@
+<!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand text-white" href="#">Your Website Name</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link text-white" aria-current="page" routerLink="/About">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" routerLink="/Login">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" routerLink="/Signup">Signup</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+  </nav>
+ <div class="sigup d-flex justify-content-center align-items-center" style="height: 100vh;">
+    <div class="card" style="width: 550px; max-height: 90vh; overflow-y:auto;">
+        <div class="card-body">
+            <h2 class="card-title text-center mb-4">Sign Up</h2>
+            <form #registrationForm="ngForm" (ngSubmit)="save(registrationForm)">
+                <div ngModelGroup="user" #group="ngModelGroup">
+                  <div class="row mb-3">
+                    <div class="col-md-6">
+                      <div data-mdb-input-init class="form-outline" [ngClass]="{'has-error': fn.invalid && (fn.dirty || fn.touched)}">
+                        <input type="text" class="form-control form-control-lg" placeholder="First Name" ngModel name="firstname" #fn="ngModel" required>
+                        <span *ngIf="fn.invalid && (fn.dirty || fn.touched)" class="text-danger">First Name is required</span>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div data-mdb-input-init class="form-outline" [ngClass]="{'has-error': ln.invalid && (ln.dirty || ln.touched)}">
+                        <input type="text" class="form-control form-control-lg" placeholder="Last Name" ngModel name="lastname" #ln="ngModel" required>
+                        <span *ngIf="ln.invalid && (ln.dirty || ln.touched)" class="text-danger">Last Name is required</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <div class="col-md-6">
+                      <div data-mdb-input-init class="form-outline" [ngClass]="{'has-error': el.invalid && (el.dirty || el.touched)}">
+                        <input type="email" class="form-control form-control-lg" placeholder="Email address" ngModel name="email" #el="ngModel" required>
+                        <span *ngIf="el.invalid && (el.dirty || el.touched)" class="text-danger">Email is required</span>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                     <input type="password" class="form-control form-control-lg"
+                            placeholder="Password" ngModel name="password" #password="ngModel"
+                            required minlength="8"
+                            [ngClass]="{'has-error': password.invalid && (password.dirty || password.touched)}">
+                     <span *ngIf="password.invalid && (password.dirty || password.touched)" class="text-danger">
+                       Password must be at least 8 characters long, containing at least one uppercase letter, one lowercase letter, one digit, and one special character.
+                     </span>
+                   
+                    </div>
+                    </div>
+                        <div class="row mb-3">
+                          <div class="col-md-6">
+                            <div data-mdb-input-init class="form-outline" [ngClass]="{'has-error': cpassword.invalid && (cpassword.dirty || cpassword.touched) || password.value !== cpassword.value}">
+                              <input type="password" class="form-control form-control-lg" placeholder="Confirm Password" ngModel name="cpassword" #cpassword="ngModel" required [ngClass]="{'is-invalid': (cpassword.dirty || cpassword.touched) && password.value !== cpassword.value}">
+                              <span *ngIf="(cpassword.invalid && (cpassword.dirty || cpassword.touched)) || (password.value !== cpassword.value && cpassword.dirty)" class="text-danger">Confirm Password must match the Password</span>
+                            </div>
+                          </div>
+                    <div class="col-md-6">
+                      <div data-mdb-input-init class="form-outline" [ngClass]="{'has-error': pnumber.invalid && (pnumber.dirty || pnumber.touched)}">
+                        <input type="tel" class="form-control form-control-lg" placeholder="Phone Number" ngModel name="phone_number" #pnumber="ngModel" required>
+                        <span *ngIf="pnumber.invalid && (pnumber.dirty || pnumber.touched)" class="text-danger">Phone Number is required</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <div class="col-md-6">
+                      <div data-mdb-input-init class="form-outline" [ngClass]="{'has-error': address.invalid && (address.dirty || address.touched)}">
+                        <textarea class="form-control form-control-lg" placeholder="Address" ngModel name="address" #address="ngModel" required></textarea>
+                        <span *ngIf="address.invalid && (address.dirty || address.touched)" class="text-danger">Address is required</span>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div data-mdb-input-init class="form-outline" [ngClass]="{'has-error': city.invalid && (city.dirty || city.touched)}">
+                        <input type="text" class="form-control form-control-lg" placeholder="City" ngModel name="city" #city="ngModel" required>
+                        <span *ngIf="city.invalid && (city.dirty || city.touched)" class="text-danger">City is required</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <div class="col-md-6">
+                      <div data-mdb-input-init class="form-outline" [ngClass]="{'has-error': state.invalid && (state.dirty || state.touched)}">
+                        <input type="text" class="form-control form-control-lg" placeholder="State" ngModel name="state" #state="ngModel" required>
+                        <span *ngIf="state.invalid && (state.dirty || state.touched)" class="text-danger">State is required</span>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div data-mdb-input-init class="form-outline" [ngClass]="{'has-error': zipcode.invalid && (zipcode.dirty || zipcode.touched)}">
+                        <input type="text" class="form-control form-control-lg" placeholder="Zip Code" ngModel name="zipcode" #zipcode="ngModel" required>
+                        <span *ngIf="zipcode.invalid && (zipcode.dirty || zipcode.touched)" class="text-danger">Zip Code is required</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mt-2 pt-2 text-center">
+                    <button type="submit" class="btn btn-primary btn-lg">Sign Up</button>
+                  </div>
+                </div>
+              </form>
+               -->
+            <!-- <form #registrationForm="ngForm">
+                <div ngModelGroup #group="ngModelGroup">
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <div data-mdb-input-init class="form-outline" [ngClass]="{'has-error': fn.invalid && (fn.dirty || fn.touched)}">
+                        <input type="text"  class="form-control form-control-lg" placeholder="First Name" ngModel name="firstname" #fn="ngModel" required>
+                        <span *ngIf="fn.invalid && (fn.dirty || fn.touched)" class="text-danger">First Name is required</span>
+                    </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div data-mdb-input-init class="form-outline" [ngClass]="{'has-error': ln.invalid && (ln.dirty || ln.touched)}">
+                   
+                            <input type="text" class="form-control form-control-lg" placeholder="Last Name" ngModel name="lastname" #ln="ngModel" required>
+                            <span *ngIf="ln.invalid && (ln.dirty || ln.touched)" class="text-danger">Last Name is required</span>
+                          </div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <div data-mdb-input-init class="form-outline datepicker w-100" [ngClass]="{'has-error': el.invalid && (el.dirty || el.touched)}">
+                             
+                            <input type="email" class="form-control form-control-lg" placeholder="Email address" ngModel name="email" #el="ngModel" required>
+                            <span *ngIf="el.invalid && (el.dirty ||el.touched)" class="text-danger">Email is required</span>
+                          </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div data-mdb-input-init class="form-outline" [ngClass]="{'has-error': password.invalid && (password.dirty || password.touched)}">
+                            
+                            <input type="password" class="form-control form-control-lg" placeholder="Password" ngModel name="password" #password="ngModel" required>
+                            <span *ngIf="password.invalid && (password.dirty || password.touched)" class="text-danger">password is required</span>
+                            <p style="font-size:8px;color:green" class="hello">Password must contain aleast 8 character aleast one uppercase one lowercase one number and one special character </p>
+                          </div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <div data-mdb-input-init class="form-outline" [ngClass]="{'has-error': cpassword.invalid && (cpassword.dirty || cpassword.touched)}">
+                           
+                            <input type="password" class="form-control form-control-lg" placeholder="Confirm Password" ngModel name="cpws" #cpassword="ngModel" required>
+                            <span *ngIf="cpassword.invalid && (cpassword.dirty || cpassword.touched)" class="text-danger">password is required</span>
+                          </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div data-mdb-input-init class="form-outline" [ngClass]="{'has-error': pnumber.invalid && (pnumber.dirty || pnumber.touched)}">
+                          
+                            <input type="tel" class="form-control form-control-lg" placeholder="Phone Number" ngModel name="phone_number" #pnumber="ngModel" required>
+                            <span *ngIf="pnumber.invalid && (pnumber.dirty || pnumber.touched)" class="text-danger">Phone Number is required</span>
+                          </div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                       
+                        <div data-mdb-input-init class="form-outline" [ngClass]="{'has-error':address.invalid && (address.dirty || address.touched)}">
+                        <textarea class="form-control form-control-lg" id="address" rows="1"placeholder="Address" ngModel name="address" #address="ngModel" required></textarea>
+                        <span *ngIf="address.invalid && (address.dirty || address.touched)" class="text-danger">Address is required</span>
+                    </div>
+                </div>
+                    <div class="col-md-6">
+                        
+                        <div data-mdb-input-init class="form-outline" [ngClass]="{'has-error': city.invalid && (city.dirty || city.touched)}">
+                        <input type="text" class="form-control form-control-lg" placeholder="city" ngModel name="city" #city="ngModel" required>
+                        <span *ngIf="city.invalid && (city.dirty || city.touched)" class="text-danger">City Name is required</span>
+                    </div>
+                </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                     
+                        <div data-mdb-input-init class="form-outline" [ngClass]="{'has-error':state.invalid && (state.dirty || state.touched)}">
+                        <input type="text" class="form-control form-control-lg" placeholder="state" ngModel name="state" #state="ngModel" required>
+                        <span *ngIf="state.invalid && (state.dirty || state.touched)" class="text-danger">State Name is required</span>
+                    </div>
+                </div>
+                    <div class="col-md-6">
+                       
+                        <div data-mdb-input-init class="form-outline" [ngClass]="{'has-error': zipcode.invalid && (zipcode.dirty || zipcode.touched)}">
+                        <input type="text" class="form-control form-control-lg"  placeholder="zipCode" ngModel name="zip" #zipcode="ngModel" required>
+                        <span *ngIf="zipcode.invalid && (zipcode.dirty || zipcode.touched)" class="text-danger">Zip Number is required</span>
+                    </div>
+                </div>
+                </div>
+                <div class="mt-2 pt-2 text-center">
+                    <button type="submit" class="btn btn-primary btn-lg" (click)="save(group)">Sign Up</button>
+                </div>
+                </div>
+            </form> -->
+        <!-- </div>
+    </div>
+</div>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+              <footer class="footer bg-dark">
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-md-3 text-white mt-4">
+                        <h5>Services</h5>
+                        <p>Share Files</p>
+                        <p>Request Files</p>
+                        <p>UploadFiles</p>
+                        <p>Store Files</p>
+                      </div>
+                      <div class="col-md-3 text-white mt-4">
+                        <h5>Browsers</h5>
+                        <p>Chrome</p>
+                        <p>FireFox</p>
+                        <p>MicroSoft Edge</p>
+                        <p>Safari</p>
+                      </div>
+                      <div class="col-md-3 text-white mt-4">
+                        <h5>Contact Us</h5>
+                        <p>Ph:999999999</p>
+                        <p>mail:mail&#64;gmail.com</p>
+                        <a href="#"><i class="fa-brands fa-facebook"></i></a>&nbsp;
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>&nbsp;
+                        <a href="#"><i class="fa-brands fa-twitter"></i></a>&nbsp;
+                        <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                      </div>
+                      <div class="col-md-3 text-white mt-4">
+                        <h5>Feedback</h5>
+                        <p>Send us your feedback</p>
+                        <input class="form-control " type="text" placeholder="enter name">
+                        <input class="form-control mt-2"type="mail" placeholder="email">
+                        <textarea class="form-control mt-2" rows="1" cols="23" name="comment" form="usrform">Enter text here...</textarea>
+                      </div>
+                    </div>
+                  </div>
+                </footer> -->

@@ -1,0 +1,90 @@
+<div class="mydrive">
+<h4> My Drive</h4>
+<div class="d-flex justify-content-end">
+  <button class="btn btn-outline-dark mb-3 mr-4" (click)="openShareModal()" style="margin-right: 8px;">
+    <i class="fa-solid fa-share">&nbsp;&nbsp;</i>Share
+  </button>
+    <button class="btn btn-outline-dark mb-3"  style="margin-right: 8px;"><i class="fa-solid fa-download">&nbsp;&nbsp;</i>Download</button>
+    <button class="btn btn-outline-dark mb-3" style="margin-right: 8px;"><i class="fa-solid fa-trash-can">&nbsp;&nbsp;</i>Delete</button>
+  </div>
+  <div class="table-container">
+    <table class="table table-striped table-bordered table-hover custom-table">
+      <thead class="thead-dark">
+        <tr>
+          <th style="width: 7%;">Select</th>
+          <th style="width: 50%;">Name</th>
+          <th style="width: 30%;">Type</th>
+          <th style="width: 10%;">user</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let folder of foldernames"
+        (dblclick)="onFolderDoubleClick(folder)"
+        [class.table-active]="folder === selectedFile">
+        <td></td>
+        <td>{{folder}}</td>
+        <td>Folder</td>
+      </tr>
+        <tr *ngFor="let file of mydrivefiles; let i = index"
+            (click)="onFileClick(file)"
+            (dblclick)="onFileDoubleClick(file)"
+            [class.table-active]="file === selectedFile">
+          <td>
+              <input type="checkbox" 
+                     class="custom-checkbox" 
+                     [checked]="file === selectedFile" 
+                     (change)="onCheckboxChange($event, file)" 
+                     (click)="$event.stopPropagation()"/>
+          </td>
+          <td>{{ file.fileName }}</td>
+          <td>{{ file.contentType }}</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div *ngIf="mydrivefiles.length === 0" style="justify-content: center; font-size: 40px;">No files available.</div>
+  <app-file-viewer [file]="fileToView"></app-file-viewer>
+  <!-- <div *ngIf="files.length === 0" style="justify-content: center; font-size: 40px;">No folders available.</div> -->
+<!-- <app-file-viewer [file]="fileToView"></app-file-viewer> -->
+</div>
+
+<div class="showfolder" *ngIf="showfolder">
+  <div class="card-body">
+    <span class="close" (click)="closeshowfolder()">&times;</span>
+    <div class="row">
+          <div class="file-b col-12 rounded-3" style="height: 100%; margin-right: 10px;">
+            <button class="btn btn-outline-dark mb-3"  (click)= "downloadFolder()" style="margin-right: 8px;">
+              <i class="fa-solid fa-download">&nbsp;&nbsp;</i>Download
+            </button>
+            <div class="table-container">
+  <table class="table table-striped table-bordered table-hover custom-table">
+    <thead class="thead-dark">
+      <tr>
+        <th style="width: 7%;">Select</th>
+        <th style="width: 50%;">Name</th>
+        <th style="width: 40%;">Type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let file of folderfiles; let i = index"
+          (click)="onFileClick(file)"
+          (dblclick)="onFileDoubleClick(file)"
+          [class.table-active]="file === selectedFile">
+        <td>
+            <input type="checkbox" 
+                   class="custom-checkbox" 
+                   [checked]="file === selectedFile" 
+                   (change)="onCheckboxChange($event, file)" 
+                   (click)="$event.stopPropagation()"/>
+        </td>
+        <td>{{ file.fileName }}</td>
+        <td>{{ file.contentType }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</div>
+</div>
+</div>
+ 

@@ -1,0 +1,40 @@
+<h3> Shared Files</h3>
+<div class="d-flex justify-content-end">
+    <button class="btn btn-outline-dark mb-3"  style="margin-right: 8px;"><i class="fa-solid fa-download">&nbsp;&nbsp;</i>Download</button>
+    <button class="btn btn-outline-dark mb-3" style="margin-right: 8px;"><i class="fa-solid fa-trash-can">&nbsp;&nbsp;</i>Delete</button>
+  </div>
+  <div class="table-container">
+    <table class="table table-striped table-bordered table-hover custom-table">
+      <thead class="thead-dark">
+        <tr>
+          <th style="width: 7%;">Select</th>
+          <th style="width: 50%;">Name</th>
+          <th style="width: 40%;">Type</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let file of sharefiles; let i = index"
+            (click)="onFileClick(file)"
+            (dblclick)="onFileDoubleClick(file)"
+            [class.table-active]="file === selectedFile">
+          <td>
+            <ng-container *ngIf="file === selectedFile; else slNo">
+              <input type="checkbox" 
+                     class="custom-checkbox" 
+                     [checked]="file === selectedFile" 
+                     (change)="onCheckboxChange($event, file)" 
+                     (click)="$event.stopPropagation()" />
+            </ng-container>
+            <ng-template #slNo>{{ i + 1 }}</ng-template>
+          </td>
+          <td>{{ file.fileName }}</td>
+          <td>{{ file.contentType }}</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <div *ngIf="sharefiles.length === 0" style="justify-content: center; font-size: 40px;">No files available.</div>
+  <app-file-viewer [file]="fileToView"></app-file-viewer>
+  

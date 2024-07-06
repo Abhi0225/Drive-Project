@@ -1,0 +1,127 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand text-white" href="#">File Repo</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link text-white" routerLink="/home1">Home</a>
+            </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" aria-current="page" routerLink="/About">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" routerLink="/Login">Login</a>
+                </li>
+               
+            </ul>
+        </div>
+    </div>
+  </nav>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<div #container class=" custom-container container">
+       <div class="signin-signup">
+            <form class="sign-in-form" [formGroup]="form" (ngSubmit)="onSubmit()">
+              <h2 class="title"> Login </h2>
+              <div class="input-field">
+                <i class="fas fa-user"></i>
+                <input placeholder="Enter username" id="username" formControlName="username" type="text">
+              </div>
+                <div *ngIf="form.get('username')?.invalid && (form.get('username')?.dirty || form.get('username')?.touched)">
+                  <small class="error" *ngIf="form.get('username')?.errors?.['required']">
+                    Username is required.
+                  </small>
+                </div>
+               <div class="input-field">
+                <i class="fa fa-lock"></i>
+                <input placeholder="Enter password" id="password" formControlName="password" type="password">
+                </div>
+                <div *ngIf="form.get('password')?.invalid && (form.get('password')?.dirty || form.get('password')?.touched)">
+                  <small class="error" *ngIf="form.get('password')?.errors?.['required']">
+                    Password is required.
+                  </small>
+                  <small class="error" *ngIf="form.get('password')?.errors?.['minlength']">
+                    Password must be at least 8 characters long.
+                  </small>
+                  <small class="error" *ngIf="form.get('password')?.errors?.['passwordStrength']">
+                    Password must contain at least one uppercase letter, one lowercase letter, one digit, and one special character.
+                  </small>
+                </div>
+              <button type="submit" value="login" id="sign-in-btn" class="btn">Login</button>
+              <div *ngIf="errorMessage" class="error">
+                {{ errorMessage }}
+              </div>
+               <!-- <div class="social-media">
+                   <a href="" class="social-icon"><i class="fab fa-facebook"></i></a>
+                   <a href="" class="social-icon"><i class="fab fa-twitter"></i></a>
+                   <a href="" class="social-icon"> <i class="fab fa-google"></i></a>
+                   <a href="" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+               </div> -->
+               <p class="account-text">Don't have an account? <a class="button" (click)="toggleSignUp()" id="sign-up-btn2">Sign up</a></p>
+           </form>
+           <form [formGroup]="registrationForm" class="sign-up-form" (ngSubmit)="nSubmit()">
+            <h2 class="title">Sign Up</h2>
+            <div class="input-field" [ngClass]="{'has-error': registrationForm.get('username')?.invalid && (registrationForm.get('username')?.dirty || registrationForm.get('username')?.touched)}">
+              <i class="fas fa-user"></i>
+              <input type="text" placeholder="Enter username" formControlName="username">
+            </div>
+              <div *ngIf="registrationForm.get('username')?.invalid && (registrationForm.get('username')?.dirty || registrationForm.get('username')?.touched)">
+                <small class="error" *ngIf="registrationForm.get('username')?.errors?.['required']">Username is required</small>
+              </div>
+        
+            <div class="input-field" [ngClass]="{'has-error': registrationForm.get('email')?.invalid && (registrationForm.get('email')?.dirty || registrationForm.get('email')?.touched)}">
+              <i class="fas fa-envelope"></i>
+              <input type="email" placeholder="Email address" formControlName="email">
+            </div>
+              <div *ngIf="registrationForm.get('email')?.invalid && (registrationForm.get('email')?.dirty || registrationForm.get('email')?.touched)">
+                <small class="error" *ngIf="registrationForm.get('email')?.errors?.['required']">Email is required</small>
+                <small class="error" *ngIf="registrationForm.get('email')?.errors?.['email']">Invalid email address</small>
+              </div>
+            
+        
+            <div class="input-field" [ngClass]="{'has-error': registrationForm.get('password')?.invalid && (registrationForm.get('password')?.dirty || registrationForm.get('password')?.touched)}">
+              <i class="fa fa-lock"></i>
+              <input type="password" placeholder="Enter password" formControlName="password">
+            </div>
+              <div *ngIf="registrationForm.get('password')?.invalid && (registrationForm.get('password')?.dirty || registrationForm.get('password')?.touched)">
+                <small class="error" *ngIf="registrationForm.get('password')?.errors?.['required']">Password is required</small>
+                <small class="error" *ngIf="registrationForm.get('password')?.errors?.['minlength']">Password must be at least 8 characters long</small>
+                <small class="error" *ngIf="registrationForm.get('password')?.errors?.['passwordStrength']">Password must contain at least one uppercase letter, one lowercase letter, one digit, and one special character</small>
+              </div>
+            
+            <p *ngIf="show === 'display'" style="color: red;">Username does not exist</p>
+            <button type="submit" class="btn">Sign Up</button>
+               <!-- <p class="social-text">Or Sign in with social platform</p>  -->
+               <!-- <div class="social-media">
+                   <a href="" class="social-icon"><i class="fab fa-facebook"></i></a>
+                   <a href="" class="social-icon"><i class="fab fa-twitter"></i></a>
+                   <a href="" class="social-icon"> <i class="fab fa-google"></i></a>
+                   <a href="" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+               </div> -->
+               <p class="account-text">Already have an account? <a class="button" (click)="toggleSignIn()" id="sign-in-btn2">Sign in</a></p>
+            </form> 
+       </div>
+       <div class="panels-container">
+           <div class="panel left-panel">
+               <div class="content">
+                   <h3>Already Member?</h3>
+                   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, recusandae.</p>
+                   <button class="btn" (click)="toggleSignIn()">Login</button>
+               </div>
+               <img src="https://www.folderit.com/wp-content/uploads/2021/01/Central-repository-sharing-information.jpg" alt="" class="image">
+           </div>
+           <div class="panel right-panel">
+               <div class="content">
+                   <h3>Not a Member?</h3>
+                   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, recusandae.</p>
+                   <button class="btn" (click)="toggleSignUp()">Sign UP</button>
+               </div>
+               <img src="https://www.folderit.com/wp-content/uploads/2021/01/Central-repository-sharing-information.jpg" alt="" class="image">
+           </div>
+       </div>
+    </div>  
+
+   
+   

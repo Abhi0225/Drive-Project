@@ -1,0 +1,51 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand text-white" href="#">File Repo</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link text-white" routerLink="/home1">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" aria-current="page" routerLink="/About">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" routerLink="/Login">Login</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<body>
+  <div class="card text-center">
+    <div class="card-body">
+      <h5 class="card-title">Welcome to File Repo</h5>
+      <p class="card-text">Your secure file repository.</p>
+      <a routerLink="'/Login" class="btn btn-primary">Login</a>
+    </div>
+  </div>
+<!-- <div *ngIf="files.length > 0">
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th>File Name</th>
+        <th>Content Type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let file of files" 
+          (click)="onFileClick(file)" 
+          (dblclick)="onFileDoubleClick(file)" 
+          [class.selected]="file === selectedFile">
+        <td>{{ file.fileName }}</td>
+        <td>{{ file.contentType }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <button class="btn btn-primary" [disabled]="!selectedFile" (click)="selectedFile && downloadSelectedFile(selectedFile)">Download</button>
+</div>
+<div *ngIf="files.length === 0">No files available.</div>
+<app-file-viewer [file]="fileToView"></app-file-viewer> -->
